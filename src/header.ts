@@ -69,7 +69,7 @@ class Header extends Base {
     }
 
     for (const column of this.columns) {
-      if (!column.width && autoWidth) {
+      if (autoWidth) {
         // tries to find the corresponding cell
         // from the ShadowTable and set the correct width
         column.width = px(

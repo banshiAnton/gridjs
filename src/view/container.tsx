@@ -101,15 +101,22 @@ export class Container extends BaseComponent<ContainerProps, ContainerState> {
     previousState: Readonly<ContainerState>,
   ) {
     // we can't jump to the Status.Rendered if previous status is not Status.Loaded
+    const config = this.props.config;
     if (
       previousState.status != Status.Rendered &&
       this.state.status == Status.Loaded
     ) {
       this.setState({
         status: Status.Rendered,
+        header: config.header.adjustWidth(
+          config.container,
+          config.tempRef,
+          this.state.data,
+          config.autoWidth,
+        )
       });
 
-      this.props.config.eventEmitter.emit('ready');
+      config.eventEmitter.emit('ready');
     }
   }
 
