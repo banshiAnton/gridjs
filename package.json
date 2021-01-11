@@ -61,6 +61,7 @@
   },
   "scripts": {
     "clean": "rimraf coverage dist tmp",
+    "postinstall": "npm run build",
     "build": "rollup -c",
     "build:watch": "rollup -c --watch",
     "lint": "eslint . --ext .ts,.tsx",
