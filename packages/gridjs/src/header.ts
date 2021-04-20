@@ -81,7 +81,7 @@ class Header extends Base {
         continue;
       }
 
-      if (!column.width && autoWidth) {
+      if (autoWidth && shadowTable.current) {
         // tries to find the corresponding cell
         // from the ShadowTable and set the correct width
         column.width = px(getWidth(shadowTable.current.base, column.id));

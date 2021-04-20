@@ -105,11 +105,18 @@ export class Container extends BaseComponent<ContainerProps, ContainerState> {
       previousState.status != Status.Rendered &&
       this.state.status == Status.Loaded
     ) {
+      const config = this.props.config;
       this.setState({
         status: Status.Rendered,
+        header: config.header.adjustWidth(
+          config.container,
+          config.tableRef,
+          config.tempRef,
+          config.autoWidth,
+        ),
       });
 
-      this.props.config.eventEmitter.emit('ready');
+      config.eventEmitter.emit('ready');
     }
   }
 
