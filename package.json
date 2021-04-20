@@ -22,7 +22,6 @@
   },
   "scripts": {
     "prettier": "prettier --ignore-path dist --write 'packages/**/*.(ts|js|scss|css)'",
-    "postinstall": "lerna bootstrap",
     "clean": "lerna run clean",
     "build": "lerna run build --stream",
     "build:watch": "lerna run build:watch --stream --parallel",
