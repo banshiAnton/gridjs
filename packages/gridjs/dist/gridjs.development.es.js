@@ -1198,7 +1198,13 @@ var Header = /** @class */ (function (_super) {
             if (autoWidth && shadowTable.current) {
                 // tries to find the corresponding cell
                 // from the ShadowTable and set the correct width
-                column.width = px(getWidth(shadowTable.current.base, column.id));
+                let width = getWidth(shadowTable.current.base, column.id);
+                if (column.sort.enabled && !column.sort.newWidth) {
+                  width += 8;
+                  column.sort.newWidth = true;
+                }
+
+                column.width = px(width);
             }
             else {
                 // column with is already defined
@@ -2577,7 +2583,7 @@ var Sort = /** @class */ (function (_super) {
         else if (direction === -1) {
             sortClassName = 'desc';
         }
-        return (v("button", { 
+        return (v("button", {
             // because the corresponding <th> has tabIndex=0
             tabIndex: -1, "aria-label": this._("sort.sort" + (direction === 1 ? 'Desc' : 'Asc')), title: this._("sort.sort" + (direction === 1 ? 'Desc' : 'Asc')), className: classJoin(className('sort'), className('sort', sortClassName), this.config.className.sort), onClick: this.changeDirection.bind(this) }));
     };
