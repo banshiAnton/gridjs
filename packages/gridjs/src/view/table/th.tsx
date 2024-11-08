@@ -113,14 +113,20 @@ export class TH extends BaseComponent<THProps, THState> {
         colSpan={this.props.colSpan > 1 ? this.props.colSpan : undefined}
         {...props}
       >
-        {this.content()}
-        {this.isSortable() && (
-          <Sort
-            ref={this.sortRef}
-            index={this.props.index}
-            {...this.props.column.sort}
-          />
-        )}
+        {
+          !this.isSortable() ? (
+            this.content()
+          ) : (
+            <div className='block-cell'>
+              <span>{this.content()}</span>
+              <Sort
+                ref={this.sortRef}
+                index={this.props.index}
+                {...this.props.column.sort}
+              />
+            </div>
+          )
+        }
       </th>
     );
   }

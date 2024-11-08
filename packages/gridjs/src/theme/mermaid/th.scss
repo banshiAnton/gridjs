@@ -33,6 +33,14 @@ th.gridjs {
         box-shadow: 0 0 0 1px $gray3;
       }
     }
+
+    .block-cell {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &-th:first-child {
